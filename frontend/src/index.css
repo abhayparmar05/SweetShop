@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Poppins', sans-serif;
+
+  /* Saffron (Primary) - Warm Orange/Gold */
+  --color-saffron-50: #fff7ed;
+  --color-saffron-100: #ffedd5;
+  --color-saffron-200: #fed7aa;
+  --color-saffron-300: #fdba74;
+  --color-saffron-400: #fb923c;
+  --color-saffron-500: #f97316;
+  --color-saffron-600: #ea580c;
+  --color-saffron-700: #c2410c;
+  --color-saffron-800: #9a3412;
+  --color-saffron-900: #7c2d12;
+
+  /* Royal (Secondary) - Deep Maroon/Burgundy */
+  --color-royal-50: #fdf2f8;
+  --color-royal-100: #fce7f3;
+  --color-royal-200: #fbcfe8;
+  --color-royal-300: #f9a8d4;
+  --color-royal-400: #f472b6;
+  --color-royal-500: #ec4899;
+  --color-royal-600: #db2777;
+  --color-royal-700: #be185d;
+  --color-royal-800: #9d174d;
+  --color-royal-900: #831843;
+
+  /* Pistachio (Accent) - Fresh Greens */
+  --color-pistachio-50: #f0fdf4;
+  --color-pistachio-100: #dcfce7;
+  --color-pistachio-200: #bbf7d0;
+  --color-pistachio-300: #86efac;
+  --color-pistachio-400: #4ade80;
+  --color-pistachio-500: #22c55e;
+  --color-pistachio-600: #16a34a;
+  --color-pistachio-700: #15803d;
+  --color-pistachio-800: #166534;
+  --color-pistachio-900: #14532d;
+
+  /* Rose (Accent) - Soft Pinks */
+  --color-rose-50: #fff1f2;
+  --color-rose-100: #ffe4e6;
+  --color-rose-200: #fecdd3;
+  --color-rose-300: #fda4af;
+  --color-rose-400: #fb7185;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+  --color-rose-700: #be123c;
+  --color-rose-800: #9f1239;
+  --color-rose-900: #881337;
+
+  /* Cream (Background) */
+  --color-cream-50: #fffbeb;
+  --color-cream-100: #fef3c7;
+  --color-cream-200: #fde68a;
+  --color-cream-300: #fcd34d;
+  --color-cream-400: #fbbf24;
+  --color-cream-500: #f59e0b;
+  --color-cream-600: #d97706;
+  --color-cream-700: #b45309;
+  --color-cream-800: #92400e;
+  --color-cream-900: #78350f;
+
+  /* Custom Animations */
+  --animate-bounce-slow: bounce-slow 3s infinite;
+  --animate-wiggle: wiggle 2s ease-in-out infinite;
+  --animate-float: float 4s ease-in-out infinite;
+}
+
+@keyframes bounce-slow {
+
+  0%,
+  100% {
+    transform: translateY(-3%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@layer base {
+  body {
+    background: linear-gradient(to bottom right, var(--color-saffron-50), var(--color-cream-50));
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    color: #4a0404;
+    /* Dark brownish text for premium feel */
+  }
+
+  /* Make all content unselectable by default */
+  * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  /* Allow selection in input fields and textareas */
+  input,
+  textarea {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+  }
+}
+
+
+/* Component Styles - Using standard CSS instead of @apply */
+.btn-primary {
+  background: linear-gradient(to right, var(--color-saffron-600), var(--color-royal-600));
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, var(--color-saffron-700), var(--color-royal-700));
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--color-royal-700);
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--color-royal-200);
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-royal-50);
+  border-color: var(--color-royal-300);
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--color-saffron-200);
+  outline: none;
+  background-color: white;
+  transition: all 0.3s;
+}
+
+.input-field:focus {
+  border-color: var(--color-saffron-400);
+  box-shadow: 0 0 0 3px var(--color-saffron-100);
+}
+
+.card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s;
+  border: 1px solid var(--color-cream-200);
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  border-color: var(--color-saffron-200);
+}
+
+.sweet-card {
+  background: linear-gradient(to bottom right, white, var(--color-cream-50));
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  border: 1px solid var(--color-saffron-100);
+  overflow: hidden;
+}
+
+.sweet-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  border-color: var(--color-saffron-300);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 28rem;
+  width: 100%;
+  padding: 2rem;
+  transform: scale(1);
+  transition: all 0.3s;
+  border: 1px solid var(--color-saffron-100);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--color-saffron-700), var(--color-royal-700));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sweet-shadow {
+  box-shadow: 0 10px 40px rgba(234, 88, 12, 0.2);
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-saffron-300);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-saffron-400);
+}
