@@ -1,4 +1,3 @@
-import React from 'react';
 
 interface PaginationProps {
     currentPage: number;
@@ -24,7 +23,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
             </button>
 
             <div className="flex items-center gap-2">
-                <span className="text-gray-700 font-medium">
+                <span className="text-gray-700 font-medium text-body">
                     Page {currentPage} of {totalPages}
                 </span>
             </div>

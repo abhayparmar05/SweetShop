@@ -71,7 +71,7 @@ const SweetForm: React.FC<SweetFormProps> = ({
         <form onSubmit={handleSubmit} className="space-y-4">
             {/* Name */}
             <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Sweet Name</label>
+                <label className="block text-small font-semibold text-gray-700 mb-2">Sweet Name</label>
                 <input
                     type="text"
                     value={formData.name}
@@ -79,12 +79,12 @@ const SweetForm: React.FC<SweetFormProps> = ({
                     className={`input-field ${errors.name ? 'border-red-500' : ''}`}
                     placeholder="e.g., Chocolate Bar"
                 />
-                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                {errors.name && <p className="text-red-500 text-small mt-1">{errors.name}</p>}
             </div>
 
             {/* Category */}
             <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Category</label>
+                <label className="block text-small font-semibold text-gray-700 mb-2">Category</label>
                 <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value as SweetCategory })}
@@ -100,7 +100,7 @@ const SweetForm: React.FC<SweetFormProps> = ({
 
             {/* Price */}
             <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Price (₹)</label>
+                <label className="block text-small font-semibold text-gray-700 mb-2">Price (₹)</label>
                 <input
                     type="number"
                     step="0.01"
@@ -110,12 +110,12 @@ const SweetForm: React.FC<SweetFormProps> = ({
                     className={`input-field ${errors.price ? 'border-red-500' : ''}`}
                     placeholder="0.00"
                 />
-                {errors.price && <p className="text-red-500 text-sm mt-1">{errors.price}</p>}
+                {errors.price && <p className="text-red-500 text-small mt-1">{errors.price}</p>}
             </div>
 
             {/* Quantity */}
             <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Quantity</label>
+                <label className="block text-small font-semibold text-gray-700 mb-2">Quantity</label>
                 <input
                     type="number"
                     min="0"
@@ -124,7 +124,7 @@ const SweetForm: React.FC<SweetFormProps> = ({
                     className={`input-field ${errors.quantity ? 'border-red-500' : ''}`}
                     placeholder="0"
                 />
-                {errors.quantity && <p className="text-red-500 text-sm mt-1">{errors.quantity}</p>}
+                {errors.quantity && <p className="text-red-500 text-small mt-1">{errors.quantity}</p>}
             </div>
 
             {/* Actions */}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label?: string;
@@ -21,7 +21,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
     return (
         <div>
             {label && (
-                <label htmlFor={id} className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor={id} className="block text-small font-semibold text-gray-700 mb-2">
                     {label}
                 </label>
             )}
@@ -52,7 +52,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
                     )}
                 </button>
             </div>
-            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+            {error && <p className="text-red-500 text-small mt-1">{error}</p>}
         </div>
     );
 };

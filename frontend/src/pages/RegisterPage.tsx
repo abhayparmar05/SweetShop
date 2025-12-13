@@ -74,10 +74,10 @@ const RegisterPage: React.FC = () => {
                     <div className="text-6xl mb-4 animate-bounce-slow text-saffron-600 flex justify-center pointer-events-none">
                         {isAdminRoute ? '🛡️' : '👤'}
                     </div>
-                    <h1 className="text-4xl font-bold gradient-text mb-2">
+                    <h1 className="heading-1 gradient-text mb-2">
                         {isAdminRoute ? 'Admin Registration' : 'Join Sweet Shop!'}
                     </h1>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 text-body">
                         {isAdminRoute
                             ? 'Create an admin account with full privileges'
                             : 'Create your account to start ordering sweets'}
@@ -89,7 +89,7 @@ const RegisterPage: React.FC = () => {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {/* First Name Field */}
                         <div>
-                            <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
+                            <label htmlFor="firstName" className="block text-small font-semibold text-gray-700 mb-2">
                                 First Name
                             </label>
                             <input
@@ -100,12 +100,12 @@ const RegisterPage: React.FC = () => {
                                 className={`input-field ${errors.firstName ? 'border-red-500' : ''}`}
                                 placeholder="John"
                             />
-                            {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
+                            {errors.firstName && <p className="text-red-500 text-small mt-1">{errors.firstName}</p>}
                         </div>
 
                         {/* Last Name Field */}
                         <div>
-                            <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-2">
+                            <label htmlFor="lastName" className="block text-small font-semibold text-gray-700 mb-2">
                                 Last Name
                             </label>
                             <input
@@ -116,12 +116,12 @@ const RegisterPage: React.FC = () => {
                                 className={`input-field ${errors.lastName ? 'border-red-500' : ''}`}
                                 placeholder="Doe"
                             />
-                            {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
+                            {errors.lastName && <p className="text-red-500 text-small mt-1">{errors.lastName}</p>}
                         </div>
 
                         {/* Email Field */}
                         <div>
-                            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                            <label htmlFor="email" className="block text-small font-semibold text-gray-700 mb-2">
                                 Email Address
                             </label>
                             <input
@@ -132,7 +132,7 @@ const RegisterPage: React.FC = () => {
                                 className={`input-field ${errors.email ? 'border-red-500' : ''}`}
                                 placeholder="your@email.com"
                             />
-                            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                            {errors.email && <p className="text-red-500 text-small mt-1">{errors.email}</p>}
                         </div>
 
                         {/* Password Field */}
@@ -145,7 +145,7 @@ const RegisterPage: React.FC = () => {
                                 placeholder="••••••••"
                                 error={errors.password}
                             />
-                            <p className="text-xs text-gray-500 mt-1">Minimum 6 characters</p>
+                            <p className="text-tiny text-gray-500 mt-1">Minimum 6 characters</p>
                         </div>
 
                         {/* Account Type Display */}
@@ -186,14 +186,14 @@ const RegisterPage: React.FC = () => {
 
                     {/* Login Link */}
                     <div className="mt-6 text-center">
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 text-body">
                             Already have an account?{' '}
                             <Link to="/login" className="text-saffron-600 font-semibold hover:underline">
                                 Login here
                             </Link>
                         </p>
                         {!isAdminRoute && (
-                            <p className="text-gray-600 mt-2">
+                            <p className="text-gray-600 text-small mt-2">
                                 Need admin access?{' '}
                                 <Link to="/register/admin" className="text-royal-600 font-semibold hover:underline">
                                     Register as Admin
@@ -201,7 +201,7 @@ const RegisterPage: React.FC = () => {
                             </p>
                         )}
                         {isAdminRoute && (
-                            <p className="text-gray-600 mt-2">
+                            <p className="text-gray-600 text-small mt-2">
                                 Want a regular account?{' '}
                                 <Link to="/register" className="text-saffron-600 font-semibold hover:underline">
                                     Register as User

@@ -1,4 +1,4 @@
-import React from 'react';
+import type { FC } from 'react';
 import type { Sweet } from '../../types/sweet.types';
 import SweetCard from './SweetCard';
 import LoadingSpinner from '../common/LoadingSpinner';
@@ -9,7 +9,7 @@ interface SweetGridProps {
     isLoading?: boolean;
 }
 
-const SweetGrid: React.FC<SweetGridProps> = ({ sweets, isLoading }) => {
+const SweetGrid: FC<SweetGridProps> = ({ sweets, isLoading }) => {
     if (isLoading) {
         return (
             <div className="flex justify-center items-center py-20">
@@ -28,7 +28,7 @@ const SweetGrid: React.FC<SweetGridProps> = ({ sweets, isLoading }) => {
     }
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {sweets.map((sweet) => (
                 <SweetCard key={sweet._id} sweet={sweet} />
             ))}

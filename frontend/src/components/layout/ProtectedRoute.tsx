@@ -1,9 +1,9 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/useRedux';
 
 interface ProtectedRouteProps {
-    children: React.ReactNode;
+    children: ReactNode;
     requireAdmin?: boolean;
 }
 

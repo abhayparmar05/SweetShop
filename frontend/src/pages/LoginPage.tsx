@@ -53,8 +53,8 @@ const LoginPage: React.FC = () => {
                     <div className="text-6xl mb-4 animate-bounce-slow text-saffron-600 flex justify-center pointer-events-none">
                         👤
                     </div>
-                    <h1 className="text-4xl font-bold gradient-text mb-2">Welcome Back!</h1>
-                    <p className="text-gray-600">Login to your Sweet Shop account</p>
+                    <h1 className="heading-1 gradient-text mb-2">Welcome Back!</h1>
+                    <p className="text-gray-600 text-body">Login to your Sweet Shop account</p>
                 </div>
 
                 {/* Login Form */}
@@ -62,7 +62,7 @@ const LoginPage: React.FC = () => {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {/* Email Field */}
                         <div>
-                            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                            <label htmlFor="email" className="block text-small font-semibold text-gray-700 mb-2">
                                 Email Address
                             </label>
                             <input
@@ -73,7 +73,7 @@ const LoginPage: React.FC = () => {
                                 className={`input-field ${errors.email ? 'border-red-500' : ''}`}
                                 placeholder="your@email.com"
                             />
-                            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                            {errors.email && <p className="text-red-500 text-small mt-1">{errors.email}</p>}
                         </div>
 
                         {/* Password Field */}
@@ -100,7 +100,7 @@ const LoginPage: React.FC = () => {
 
                     {/* Register Link */}
                     <div className="mt-6 text-center">
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 text-body">
                             Don't have an account?{' '}
                             <Link to="/register" className="text-royal-600 font-semibold hover:underline">
                                 Register here

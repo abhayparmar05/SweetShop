@@ -98,33 +98,6 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSubmit, onCancel, isLoading
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
 
-            {/* Role */}
-            <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Role</label>
-                <div className="flex gap-4">
-                    <label className="flex items-center cursor-pointer">
-                        <input
-                            type="radio"
-                            value="user"
-                            checked={formData.role === 'user'}
-                            onChange={(e) => setFormData({ ...formData, role: e.target.value as 'user' })}
-                            className="mr-2 w-4 h-4"
-                        />
-                        <span className="text-gray-700">👤 User</span>
-                    </label>
-                    <label className="flex items-center cursor-pointer">
-                        <input
-                            type="radio"
-                            value="admin"
-                            checked={formData.role === 'admin'}
-                            onChange={(e) => setFormData({ ...formData, role: e.target.value as 'admin' })}
-                            className="mr-2 w-4 h-4"
-                        />
-                        <span className="text-gray-700">👑 Admin</span>
-                    </label>
-                </div>
-            </div>
-
             {/* Actions */}
             <div className="flex justify-end space-x-3 pt-4">
                 <button type="button" onClick={onCancel} className="btn-secondary" disabled={isLoading}>

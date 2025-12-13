@@ -1,46 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../hooks/useRedux';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { sweetsApi } from '../api/sweets.api';
-import type { Sweet } from '../types/sweet.types';
 
-// Extended interface for display purposes since backend model is simple
-interface DisplaySweet extends Omit<Sweet, '_id'> {
-    id: string;
-    image: string;
-    description: string;
-}
-
-const HomePage: React.FC = () => {
+const HomePage: FC = () => {
     const { isAuthenticated } = useAppSelector((state) => state.auth);
-    const [featuredSweets, setFeaturedSweets] = useState<DisplaySweet[]>([]);
-    const [loading, setLoading] = useState(true);
-
-
-
-    useEffect(() => {
-        const fetchSweets = async () => {
-            try {
-                const response = await sweetsApi.getAllSweets(1, 6);
-                // Map API data to display format with placeholders for missing fields
-                const mappedSweets: DisplaySweet[] = response.data.map((sweet) => ({
-                    ...sweet,
-                    id: sweet._id,
-                    image: '',
-                    description: `Delicious ${sweet.category} sweet - ${sweet.name}`,
-                }));
-                setFeaturedSweets(mappedSweets);
-            } catch (error) {
-                console.error('Failed to fetch sweets:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchSweets();
-    }, []);
 
     return (
         <div className="min-h-screen flex flex-col bg-cream-50">
@@ -52,25 +17,25 @@ const HomePage: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         {/* Left Content */}
                         <div className="text-center lg:text-left z-10">
-                            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-royal-900 leading-tight">
+                            <h1 className="heading-1 mb-6 text-royal-900">
                                 <span className="gradient-text">Celebrate with</span>
                                 <br />
                                 <span className="text-saffron-600">Delicious Sweets!</span>
                             </h1>
-                            <p className="text-lg md:text-xl text-royal-800/80 mb-8 max-w-lg mx-auto lg:mx-0">
+                            <p className="text-body text-royal-800/80 mb-8 max-w-lg mx-auto lg:mx-0">
                                 Experience the rich heritage of Indian sweets. Handcrafted with pure ghee, premium dry fruits, and lots of love.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                                 {isAuthenticated ? (
-                                    <Link to="/dashboard" className="btn-primary text-lg px-8 py-4 shadow-xl hover:shadow-2xl">
+                                    <Link to="/shop" className="btn-primary px-8 py-4 shadow-xl hover:shadow-2xl">
                                         Order Sweet Box
                                     </Link>
                                 ) : (
                                     <>
-                                        <Link to="/register" className="btn-primary text-lg px-8 py-4 shadow-xl hover:shadow-2xl">
+                                        <Link to="/register" className="btn-primary px-8 py-4 shadow-xl hover:shadow-2xl">
                                             Start Ordering
                                         </Link>
-                                        <Link to="/login" className="btn-secondary text-lg px-8 py-4">
+                                        <Link to="/login" className="btn-secondary px-8 py-4">
                                             Sign In
                                         </Link>
                                     </>
@@ -78,7 +43,78 @@ const HomePage: React.FC = () => {
                             </div>
                         </div>
 
+                        {/* Right Image - Premium Design */}
+                        <div className="hidden lg:block relative z-10">
+                            <div className="relative">
+                                {/* Main Image Container with Multiple Layers */}
+                                <div className="relative group">
+                                    {/* Animated gradient background */}
+                                    <div className="absolute -inset-4 bg-gradient-to-br from-saffron-400 via-rose-400 to-royal-500 rounded-[2.5rem] blur-3xl opacity-40 group-hover:opacity-60 transition-all duration-700 animate-pulse"></div>
 
+                                    {/* Main Image */}
+                                    <div className="relative overflow-hidden rounded-[2rem] shadow-2xl">
+                                        {/* Gradient Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-tr from-royal-900/40 via-transparent to-saffron-500/30 z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+
+                                        <img
+                                            src="/static/first.jpg"
+                                            alt="Delicious Traditional Indian Sweets"
+                                            className="relative w-full max-w-lg h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                        />
+
+                                        {/* Decorative border */}
+                                        <div className="absolute inset-0 rounded-[2rem] border-4 border-white/20 z-20 pointer-events-none"></div>
+                                    </div>
+
+                                    {/* Floating Badge - Top Right */}
+                                    <div className="absolute -top-4 -right-4 z-30 transform rotate-12 group-hover:rotate-6 transition-transform duration-500">
+                                        <div className="bg-gradient-to-br from-saffron-500 to-saffron-600 text-white px-6 py-3 rounded-2xl shadow-2xl border-4 border-white">
+                                            <div className="text-center">
+                                                <div className="heading-3">100%</div>
+                                                <div className="text-tiny font-semibold uppercase tracking-wide">Pure Ghee</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Floating Badge - Bottom Left */}
+                                    <div className="absolute -bottom-3 -left-3 z-30 transform -rotate-6 group-hover:rotate-0 transition-transform duration-500">
+                                        <div className="bg-gradient-to-br from-royal-600 to-royal-700 text-white px-5 py-3 rounded-xl shadow-2xl border-4 border-white">
+                                            <div className="flex items-center gap-2">
+                                                <div className="text-3xl">⭐</div>
+                                                <div>
+                                                    <div className="heading-4 leading-none">Premium</div>
+                                                    <div className="text-tiny font-medium opacity-90">Quality</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Floating Mini Card - Top Left */}
+                                    <div className="absolute -top-6 -left-6 z-20 transform group-hover:-translate-y-2 transition-transform duration-500">
+                                        <div className="bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rose-400 to-rose-500 flex items-center justify-center text-2xl shadow-lg">
+                                                    🎉
+                                                </div>
+                                                <div>
+                                                    <div className="text-small font-bold text-royal-900">Fresh Daily</div>
+                                                    <div className="text-tiny text-gray-600">Since 2000</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Decorative dots pattern */}
+                                    <div className="absolute -bottom-8 -right-8 w-32 h-32 opacity-20 pointer-events-none">
+                                        <div className="grid grid-cols-4 gap-3">
+                                            {[...Array(16)].map((_, i) => (
+                                                <div key={i} className="w-2 h-2 rounded-full bg-saffron-500"></div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -87,44 +123,111 @@ const HomePage: React.FC = () => {
                 <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-rose-100 rounded-full blur-3xl opacity-50 -z-10 pointer-events-none"></div>
             </section>
 
-            {/* Featured Sweets Section */}
-            <section className="py-12 md:py-16 px-4">
+            {/* Featured Sweets Gallery Section */}
+            <section className="py-12 md:py-20 px-4 relative overflow-hidden">
+                {/* Background decorations */}
+                <div className="absolute top-20 left-10 w-72 h-72 bg-saffron-100 rounded-full blur-3xl opacity-30 -z-10"></div>
+                <div className="absolute bottom-20 right-10 w-96 h-96 bg-rose-100 rounded-full blur-3xl opacity-30 -z-10"></div>
+
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-12 md:mb-16">
-                        <span className="text-saffron-600 font-bold tracking-wider uppercase text-sm mb-2 block">Premium Selection</span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-royal-900 mb-4">Our Royal Collection</h2>
-                        <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">From the streets of Kolkata to the palaces of Mysore, taste the diversity of India.</p>
+                        <span className="text-saffron-600 font-bold tracking-wider uppercase text-small mb-2 block animate-pulse">Premium Selection</span>
+                        <h2 className="heading-2 text-royal-900 mb-4">
+                            Our <span className="gradient-text">Royal Collection</span>
+                        </h2>
+                        <p className="text-body text-gray-600 max-w-2xl mx-auto">
+                            India's finest sweets, handcrafted with heritage and heart.
+                        </p>
+                        <div className="w-24 h-1 bg-gradient-to-r from-saffron-400 via-royal-400 to-rose-400 mx-auto rounded-full mt-4"></div>
                     </div>
 
-                    {loading ? (
-                        <div className="flex justify-center items-center py-20">
-                            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-saffron-600"></div>
-                        </div>
-                    ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                            {featuredSweets.map((sweet) => (
-                                <div key={sweet.id} className="sweet-card p-6 md:p-8 group relative bg-white">
-                                    <div className="absolute top-4 right-4 text-xs font-bold text-saffron-600 bg-saffron-50 px-2 py-1 rounded-full border border-saffron-100">
-                                        {sweet.category}
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-royal-900 mb-2 text-center">
-                                        {sweet.name}
-                                    </h3>
-                                    <p className="text-gray-600 mb-6 text-center text-sm line-clamp-2">
-                                        {sweet.description}
-                                    </p>
-                                    <div className="flex justify-between items-center pt-4 border-t border-dashed border-gray-200">
-                                        <span className="text-xl font-bold text-saffron-700">
-                                            ₹{sweet.price}/kg
+                    {/* Grid of Sweets */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                        {/* Kaju Katli */}
+                        <div className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                            <div className="relative h-64 md:h-80 overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-saffron-600/20 to-royal-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                                <img
+                                    src="/static/kajukatri.jpg"
+                                    alt="Premium Kaju Katli - The King of Indian Sweets"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125 group-hover:rotate-2"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-royal-900/90 via-royal-900/40 to-transparent flex items-end p-6 z-20">
+                                    <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                        <span className="inline-block bg-saffron-500 text-white text-tiny font-bold px-3 py-1 rounded-full mb-2 shadow-lg">
+                                            Premium
                                         </span>
-                                        <button className="btn-primary text-sm px-4 py-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                                            Add to Box
-                                        </button>
+                                        <h4 className="heading-3 text-white drop-shadow-lg">
+                                            Kaju Katli
+                                        </h4>
+                                        <p className="text-white/80 text-small mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                            The crown jewel of Indian sweets - pure cashew perfection
+                                        </p>
                                     </div>
                                 </div>
-                            ))}
+                            </div>
                         </div>
-                    )}
+
+                        {/* Second Sweet */}
+                        <div className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                            <div className="relative h-64 md:h-80 overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-rose-600/20 to-saffron-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                                <img
+                                    src="/static/second.jpg"
+                                    alt="Premium Sweet Collection"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125 group-hover:rotate-2"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-royal-900/90 via-royal-900/40 to-transparent flex items-end p-6 z-20">
+                                    <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                        <span className="inline-block bg-rose-500 text-white text-tiny font-bold px-3 py-1 rounded-full mb-2 shadow-lg">
+                                            Premium
+                                        </span>
+                                        <h4 className="heading-3 text-white drop-shadow-lg">
+                                            Festive Specials
+                                        </h4>
+                                        <p className="text-white/80 text-small mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                            Celebrate every moment with sweetness
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Third Sweet */}
+                        <div className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                            <div className="relative h-64 md:h-80 overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-royal-600/20 to-pistachio-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                                <img
+                                    src="/static/third.jpg"
+                                    alt="Artisan Sweet Creations"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125 group-hover:rotate-2"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-royal-900/90 via-royal-900/40 to-transparent flex items-end p-6 z-20">
+                                    <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                        <span className="inline-block bg-pistachio-500 text-white text-tiny font-bold px-3 py-1 rounded-full mb-2 shadow-lg">
+                                            Artisan
+                                        </span>
+                                        <h4 className="heading-3 text-white drop-shadow-lg">
+                                            Handcrafted Joy
+                                        </h4>
+                                        <p className="text-white/80 text-small mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                            Each piece made with love and expertise
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Call to Action */}
+                    <div className="mt-12 md:mt-16 text-center">
+                        <Link
+                            to={isAuthenticated ? "/shop" : "/register"}
+                            className="inline-block bg-gradient-to-r from-saffron-500 to-royal-500 text-white font-bold heading-4 px-10 py-4 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-b-4 border-royal-700"
+                        >
+                            {isAuthenticated ? "Explore Our Collection" : "Start Your Sweet Journey"}
+                        </Link>
+                    </div>
                 </div>
             </section>
 
@@ -134,8 +237,8 @@ const HomePage: React.FC = () => {
 
                 <div className="max-w-7xl mx-auto relative z-10">
                     <div className="text-center mb-16">
-                        <span className="text-saffron-600 font-bold tracking-wider uppercase text-sm mb-2 block">Our Promise</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-royal-900 mb-4">Why Sweet Shop?</h2>
+                        <span className="text-saffron-600 font-bold tracking-wider uppercase text-small mb-2 block">Our Promise</span>
+                        <h2 className="heading-2 text-royal-900 mb-4">Why Sweet Shop?</h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-saffron-400 to-royal-400 mx-auto rounded-full"></div>
                     </div>
 
@@ -146,8 +249,8 @@ const HomePage: React.FC = () => {
                             { title: 'Festive Packing', desc: 'Beautiful, custom-designed boxes perfect for weddings, festivals, and corporate gifting needs.', color: 'rose' }
                         ].map((feature, idx) => (
                             <div key={idx} className={`group p-8 rounded-2xl bg-${feature.color}-50 border border-${feature.color}-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2`}>
-                                <h3 className="text-2xl font-bold mb-4 text-royal-900">{feature.title}</h3>
-                                <p className="text-gray-600 leading-relaxed text-lg">
+                                <h3 className="heading-3 mb-4 text-royal-900">{feature.title}</h3>
+                                <p className="text-gray-600 leading-relaxed text-body">
                                     {feature.desc}
                                 </p>
                             </div>
@@ -160,9 +263,9 @@ const HomePage: React.FC = () => {
             <section className="py-20 px-4 bg-gradient-to-b from-royal-50 to-white">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <span className="text-royal-600 font-bold tracking-wider uppercase text-sm mb-2 block">Testimonials</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-royal-900 mb-4">What Our Customers Say</h2>
-                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here is what our happy customers have to say.</p>
+                        <span className="text-royal-600 font-bold tracking-wider uppercase text-small mb-2 block">Testimonials</span>
+                        <h2 className="heading-2 text-royal-900 mb-4">What Our Customers Say</h2>
+                        <p className="text-body text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here is what our happy customers have to say.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -178,50 +281,16 @@ const HomePage: React.FC = () => {
                                         <span className="text-white font-bold text-lg">{testimonial.initials}</span>
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-lg text-royal-900">{testimonial.name}</h4>
-                                        <p className="text-saffron-600 text-sm font-medium">{testimonial.role}</p>
+                                        <h4 className="font-bold heading-4 text-royal-900">{testimonial.name}</h4>
+                                        <p className="text-saffron-600 text-small font-medium">{testimonial.role}</p>
                                     </div>
                                 </div>
-                                <p className="text-gray-600 italic text-lg leading-relaxed relative z-10">
+                                <p className="text-gray-600 italic text-body leading-relaxed relative z-10">
                                     {testimonial.text}
                                 </p>
                             </div>
                         ))}
                     </div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className="py-20 px-4 bg-gradient-to-r from-saffron-600 to-royal-600 relative overflow-hidden">
-                {/* Pattern overlay */}
-                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '30px 30px' }}></div>
-
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                    {isAuthenticated ? (
-                        <>
-                            <h2 className="text-4xl font-bold text-white mb-6">
-                                Ready for a Royal Treat?
-                            </h2>
-                            <p className="text-xl text-saffron-100 mb-10 max-w-2xl mx-auto">
-                                Check out our latest festive collections and manage your orders from your dashboard!
-                            </p>
-                            <Link to="/dashboard" className="bg-white text-royal-700 font-bold px-10 py-4 rounded-xl hover:shadow-2xl hover:bg-saffron-50 transition-all inline-block text-lg border-b-4 border-royal-200">
-                                Go to Dashboard
-                            </Link>
-                        </>
-                    ) : (
-                        <>
-                            <h2 className="text-4xl font-bold text-white mb-6">
-                                Bring Sweetness to Your Life
-                            </h2>
-                            <p className="text-xl text-saffron-100 mb-10 max-w-2xl mx-auto">
-                                Join thousands of happy families who trust Sweet Shop for their celebrations.
-                            </p>
-                            <Link to="/register" className="bg-white text-royal-700 font-bold px-10 py-4 rounded-xl hover:shadow-2xl hover:bg-saffron-50 transition-all inline-block text-lg border-b-4 border-royal-200">
-                                Order Now
-                            </Link>
-                        </>
-                    )}
                 </div>
             </section>
 
