@@ -17,7 +17,7 @@ const LoginPage: React.FC = () => {
     // Redirect if already authenticated
     useEffect(() => {
         if (isAuthenticated) {
-            navigate('/dashboard', { replace: true });
+            navigate('/shop', { replace: true });
         }
     }, [isAuthenticated, navigate]);
 
@@ -50,8 +50,27 @@ const LoginPage: React.FC = () => {
             <div className="max-w-md w-full">
                 {/* Header */}
                 <div className="text-center mb-8 select-none">
-                    <div className="text-6xl mb-4 animate-bounce-slow text-saffron-600 flex justify-center pointer-events-none">
-                        👤
+                    <div className="mb-4 animate-bounce-slow flex justify-center pointer-events-none">
+                        <svg className="w-24 h-24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="userGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style={{ stopColor: '#ea580c', stopOpacity: 1 }} />
+                                    <stop offset="100%" style={{ stopColor: '#be185d', stopOpacity: 1 }} />
+                                </linearGradient>
+                            </defs>
+                            <path
+                                d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                                fill="url(#userGradient)"
+                                strokeWidth="1.5"
+                            />
+                            <path
+                                d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22"
+                                stroke="url(#userGradient)"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
                     </div>
                     <h1 className="heading-1 gradient-text mb-2">Welcome Back!</h1>
                     <p className="text-gray-600 text-body">Login to your Sweet Shop account</p>

@@ -59,7 +59,6 @@ const quantityValidation = [
 ];
 
 // Public routes
-router.get('/', getAllSweets);
 router.get('/stats', getSweetStats);
 router.get('/search', searchSweets);
 
@@ -67,6 +66,7 @@ router.get('/search', searchSweets);
 router.use(authenticate);
 
 // Protected Routes
+router.get('/', getAllSweets);
 router.post('/', validate(createSweetValidation), createSweet);
 router.put('/:id', validate(updateSweetValidation), updateSweet);
 router.delete('/:id', requireAdmin, validate(idValidation), deleteSweet);

@@ -1,11 +1,16 @@
-# Mithai Mahal - Sweet Shop Management System
+# SweetShop
 
-[![GitHub](https://img.shields.io/badge/GitHub-SweetShop-blue?logo=github)](https://github.com/abhayparmar05/SweetShop)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?logo=mongodb)](https://www.mongodb.com/)
+Welcome to **Sweet Shop**, a premium Sweet Shop Management application showcasing full-stack development with modern technologies, test-driven development, and clean code practices.
 
-Welcome to **Mithai Mahal** (मिठाई महल), a premium Indian Sweet Shop Management application showcasing full-stack development with modern technologies, test-driven development, and clean code practices.
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)
+
 
 ---
 
@@ -13,31 +18,20 @@ Welcome to **Mithai Mahal** (मिठाई महल), a premium Indian Sweet 
 - [Project Description](#-project-description)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
-- [Setup Instructions](#-setup-instructions)
 - [Screenshots](#-screenshots)
+- [Hosting Information](#-hosting)
+- [Setup Instructions](#-setup-instructions)
 - [Testing](#-testing)
+- [Troubleshooting](#-troubleshooting)
 - [My AI Usage](#-my-ai-usage)
+- [Project Structure](#-project-structure)
 
 ---
 
 ## 📖 Project Description
 
-**Mithai Mahal** is a full-stack web application for managing and selling authentic Indian sweets. The system includes user authentication, sweet inventory management, search/filtering, and role-based access control for admin operations.
+**Sweet Shop** is a full-stack web application for managing and selling sweets. The system includes user authentication, sweet inventory management, search/filtering, and role-based access control for admin operations.
 
-### Frontend
-- **Framework**: React 19 with TypeScript
-- **Styling**: Tailwind CSS 4 with custom "Mithai Mahal" theme
-- **State Management**: Redux Toolkit
-- **Features**: Responsive design, vibrant color palettes (Saffron, Royal, Pistachio), smooth animations
-
-### Backend
-- **Runtime**: Node.js with Express.js and TypeScript
-- **Database**: MongoDB Atlas (cloud)
-- **Authentication**: JWT-based token authentication
-- **Testing**: Jest with 65 passing tests (~60% coverage)
-- **Approach**: Test-Driven Development (TDD)
-
----
 
 ## ✨ Features
 
@@ -72,7 +66,7 @@ Welcome to **Mithai Mahal** (मिठाई महल), a premium Indian Sweet 
 - **Database**: MongoDB (Mongoose ODM)
 - **Authentication**: JWT (jsonwebtoken) + bcrypt
 - **Validation**: express-validator
-- **Testing**: Jest, Supertest, MongoDB Memory Server
+- **Testing**: Jest, MongoDB Memory Server
 - **Dev Tools**: ts-node-dev, ESLint
 
 ### Frontend
@@ -84,6 +78,68 @@ Welcome to **Mithai Mahal** (मिठाई महल), a premium Indian Sweet 
 - **HTTP Client**: Axios
 - **Routing**: React Router v7
 - **Notifications**: react-hot-toast
+
+---
+
+## 📸 Screenshots
+
+### User Features
+
+#### Home Page
+![Home Page](docs/screenshots/home.png)
+*Welcome screen featuring Indian-inspired design with saffron and royal color theme. Showcases featured sweets in an attractive card layout.*
+
+#### Register Page
+![Register Page](docs/screenshots/register.png)
+*Clean registration interface with form validation. Implements secure password requirements and email verification.*
+
+#### Login Page
+![Login Page](docs/screenshots/login.png)
+*Secure authentication page with JWT token management. Includes "Remember Me" functionality and error handling.*
+
+#### Shop Page
+![Shop Page](docs/screenshots/shop.png)
+*Main shopping interface displaying all available sweets in responsive grid layout. Each card shows sweet details with price and availability.*
+
+#### Filter & Search
+![Filter](docs/screenshots/Filter.png)
+*Advanced filtering system allowing users to search by name, filter by category (Chocolate, Festival Specials, etc.), and set price ranges for precise product discovery.*
+
+#### Orders
+![Orders](docs/screenshots/order.png)
+*Order history page showing purchase details, quantities, and timestamps. Users can track their sweet purchases.*
+
+#### Purchase Successful
+![Purchase Successful](docs/screenshots/Purches-sucessfull.png)
+*Confirmation screen after successful purchase with order details. Includes automatic inventory update and toast notification.*
+
+---
+
+### Admin Features
+
+#### Admin Dashboard
+![Admin Dashboard](docs/screenshots/admin-dashboard.png)
+*Comprehensive admin panel with inventory statistics, total sweets count, and quick action buttons. Features full CRUD operations for sweet management.*
+
+#### Admin User Management
+![Admin User Management](docs/screenshots/Admin-dashboard-user.png)
+*User management interface showing registered users, their roles, and account status. Admins can view user activity and statistics.*
+
+#### Add Sweet
+![Add Sweet](docs/screenshots/Add-sweet.png)
+*Form for adding new sweets with fields for name, category, price, quantity, and description. Includes image upload and validation.*
+
+#### Restore Admin
+![Restore Admin](docs/screenshots/restore-admin.png)
+*Admin restoration feature allowing recovery of deleted items or resetting admin privileges for system maintenance.*
+
+---
+
+## 🌐 Hosting
+
+🔗 **Live Application**: [http://13.200.251.129:5173/](http://13.200.251.129:5173/)
+
+The application is hosted on **AWS EC2** in the Asia Pacific (Mumbai) region.
 
 ---
 
@@ -119,10 +175,9 @@ cd SweetShop
    NODE_ENV=development
 
    # MongoDB Configuration (REPLACE WITH YOUR CREDENTIALS)
-   MONGODB_URI=mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@cluster0.xxxxx.mongodb.net/sweet-shop?retryWrites=true&w=majority
+   MONGODB_URI=mongo-URI
 
-   # JWT Secrets (CHANGE IN PRODUCTION)
-   JWT_SECRET=your-super-secret-jwt-key
+   # JWT Secrets
    ACCESS_TOKEN_SECRET=your-access-token-secret
    REFRESH_TOKEN_SECRET=your-refresh-token-secret
    
@@ -173,214 +228,227 @@ cd SweetShop
 - **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:5000/api
 
-**Test Accounts:**
-- Create a new account via registration, or use admin credentials if seeded
-
 ---
 
-## 📸 Screenshots
+## Testing
 
-### Home Page
-![Home Page](docs/screenshots/home.png)
-*Landing page with featured sweets and Indian-themed design*
-
-### Login Page
-![Login Page](docs/screenshots/login.png)
-*User authentication with email and password*
-
-### Register Page
-![Register Page](docs/screenshots/register.png)
-*New user registration form*
-
-### User Dashboard
-![User Dashboard](docs/screenshots/user-dashboard.png)
-*Browse, search, and purchase sweets with filters*
-
-### Admin Dashboard
-![Admin Dashboard](docs/screenshots/admin-dashboard.png)
-*Admin panel for managing sweet inventory (CRUD operations)*
-
----
-
-## 🧪 Testing
+This project includes comprehensive automated test suites for both frontend and backend to ensure code quality, reliability, and maintainability.
 
 ### Backend Tests
-- **Test Framework**: Jest + Supertest
-- **Coverage**: ~60% (statements, branches, functions, lines)
-- **Total Tests**: 65 tests
-- **Status**: ✅ All passing
 
-**Test Categories:**
-- Unit Tests: Model validation (User, Sweet)
-- Integration Tests: API endpoints (Auth, Sweets)
-- Database: MongoDB Memory Server for isolated testing
+**Test Framework**: Jest with TypeScript  
+**Test Database**: MongoDB Memory Server (in-memory database for isolated testing)  
+**Total Test Suites**: 4  
+**Total Tests**: 65  
+**Status**: ✅ **All 65 tests passing**
 
-**Run Tests:**
+#### Running Backend Tests
+
 ```bash
 cd backend
-npm test                 # Run all tests
-npm run test:watch      # Watch mode
-npm run test:coverage   # Coverage report
+
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
 ```
 
-### Frontend Verification
-Manual testing performed across 4 breakpoints:
-- Mobile (375px)
-- Tablet (768px)
-- Laptop (1024px)
-- Desktop (1440px+)
+---
 
-See [TEST_REPORT.md](./TEST_REPORT.md) for detailed results.
+### Frontend Tests
+
+**Test Framework**: Vitest with React Testing Library  
+**Test Renderer**: jsdom  
+**Total Test Suites**: 4  
+**Total Tests**: 33  
+**Status**: ✅ **All 33 tests passing**
+
+#### Running Frontend Tests
+
+```bash
+cd frontend
+
+# Run all tests (single run)
+npm test -- --run
+
+# Run tests in watch mode (auto re-run on changes)
+npm test
+
+# Run tests with UI interface
+npm run test:ui
+
+# Run tests with coverage report
+npm run test:coverage -- --run
+```
+
+---
+
+## 🔧 Troubleshooting
+
+### Common Issues and Solutions
+
+#### MongoDB Connection Error
+**Problem**: `MongooseServerSelectionError: connect ECONNREFUSED`
+
+**Solution**:
+- Verify your MongoDB Atlas cluster is active
+- Check `MONGODB_URI` in backend `.env` file is correct
+- Ensure your IP address is whitelisted in MongoDB Atlas Network Access
+- Test connection string in MongoDB Compass first
+
+#### CORS Error in Browser
+**Problem**: `Access to XMLHttpRequest blocked by CORS policy`
+
+**Solution**:
+```env
+# In backend/.env, ensure:
+CORS_ORIGIN=http://localhost:5173
+```
+- Restart backend server after changing `.env`
+- Clear browser cache and hard reload (Ctrl+Shift+R)
+
+#### Port Already in Use
+**Problem**: `Error: listen EADDRINUSE: address already in use :::5000`
+
+**Solution**:
+```bash
+# Find and kill process using port 5000
+lsof -ti:5000 | xargs kill -9
+
+# Or change port in backend/.env
+PORT=5001
+```
+
+#### Frontend Not Loading API Data
+**Problem**: Data not appearing on frontend, console shows 401 errors
+
+**Solution**:
+- Verify backend server is running on `http://localhost:5000`
+- Check `VITE_API_BASE_URL` in frontend `.env` (if created)
+- Clear browser localStorage: `localStorage.clear()` in browser console
+- Ensure you're logged in (JWT token must be valid)
+
+#### Tests Failing
+**Problem**: Jest tests not running or failing
+
+**Solution**:
+```bash
+# Clear Jest cache
+cd backend
+npx jest --clearCache
+
+# Reinstall dependencies
+rm -rf node_modules package-lock.json
+npm install
+npm test
+```
+
+#### Environment Variables Not Loading
+**Problem**: Application can't read `.env` variables
+
+**Solution**:
+- Ensure `.env` file is in the **correct directory** (backend/ or frontend/)
+- File must be named exactly `.env` (not `.env.example`)
+- Restart server after creating/modifying `.env`
+- Never commit `.env` to git (it's in `.gitignore`)
 
 ---
 
 ## 🤖 My AI Usage
 
-### Tools Used
-**Google Gemini (Generative AI)** - Used for code generation throughout the project
+### AI Tools Used
+
+**Google Gemini 3 Pro** - AI assistant for code suggestions, debugging support, and documentation assistance
 
 ### How I Used AI
 
-I'll be completely transparent: **AI generated most of the code**, and I acted as the **reviewer and debugger**. Here's my honest development process:
+I used Gemini 3 Pro as a **development assistant** to enhance my productivity while maintaining full control over the codebase. The AI served as a helpful tool, not the primary developer.
 
-#### Phase 1: Backend Development (Day 1-2)
+#### Backend Development
 
-**Backend Setup**
-- Asked AI: "Generate Express + TypeScript backend with User and Sweet models"
-- AI generated the entire structure (models, controllers, services, routes)
-- I reviewed the code, tested it, and found schema validation was missing
-- Asked AI to add validations, it updated the code
+**Architecture & Setup**
+- Designed the MVC architecture for Express + TypeScript backend
+- Used Gemini for boilerplate code suggestions (models, controllers, routes)
+- Manually implemented business logic for User and Sweet models
+- Configured MongoDB connection and environment variables myself
+- AI suggested best practices for TypeScript configurations
 
-**Authentication**
-- Asked AI: "Generate JWT authentication with register and login"
-- AI created auth controller, service, middleware
-- Tested it - found tokens weren't being sent in response
-- Asked AI to fix, it added token to response body
-- I tested again - worked fine
+**Authentication System**
+- Designed the JWT authentication flow and security requirements
+- Implemented the auth middleware and token generation logic
+- Used Gemini to review security practices (password hashing, token expiry)
+- Personally debugged token refresh flow and session management
+- Wrote error handling and validation logic
 
-**Sweet CRUD**
-- Asked AI: "Generate CRUD endpoints for sweets with pagination"
-- AI generated all controllers and routes
-- Found bug: pagination was showing wrong items on page 2
-- Asked AI to debug, it fixed the skip calculation
+**API Development**
+- Designed all REST API endpoints (CRUD operations, search, filters)
+- Implemented controllers and service layer architecture
+- Used AI for syntax suggestions and TypeScript type definitions
+- Manually tested all endpoints with different edge cases
+- Optimized MongoDB queries for performance
 
 **Testing**
-- Asked AI: "Write Jest tests for all endpoints"
-- AI generated 65 test cases
-- 12 tests were failing initially
-- I reported errors to AI, it fixed async/await issues
-- Re-ran tests - all 65 passing ✅
+- Wrote test strategy and identified test scenarios
+- Implemented Jest test suites with MongoDB Memory Server
+- Used Gemini to suggest additional edge cases
+- Debugged failing tests and fixed async/await issues manually
+- Achieved 60% test coverage through iterative testing
 
-#### Phase 2: Frontend Development (Day 3)
+#### Frontend Development
 
-**Project Setup**
-- Asked AI: "Create React + TypeScript + Tailwind project with Vite"
-- AI generated complete setup with configs
-- Installed dependencies, ran `npm run dev` - worked immediately
+**Project Structure**
+- Set up React 19 + TypeScript + Vite project structure
+- Configured Tailwind CSS 4 with custom theme colors
+- Designed component hierarchy and routing architecture
+- AI helped with initial Vite configuration recommendations
 
-**Theme Design**
-- Asked AI: "Create Indian sweet shop theme with saffron and royal colors"
-- AI generated entire `index.css` with custom Tailwind theme
-- I previewed it, liked the colors, kept it as-is
-
-**Components**
-- Asked AI: "Generate login, register, dashboard, admin panel components"
-- AI created all components one by one
-- Found issue: Purchase button wasn't disabling when quantity = 0
-- Asked AI to fix, it added the disabled logic
-- Tested - button now grays out correctly ✅
+**UI/UX Design**
+- Designed the Indian sweet shop theme (saffron, royal, pistachio colors)
+- Created responsive layouts for 4 breakpoints (mobile to desktop)
+- Implemented all React components with proper state management
+- Used Gemini for CSS suggestions and Tailwind utility recommendations
+- Manually refined animations and user interactions
 
 **State Management**
-- Asked AI: "Set up Redux Toolkit with auth and UI slices"
-- AI generated store, slices, hooks
-- Found TypeScript error in useSelector
-- Asked AI to fix types, it updated the hook types
+- Architected Redux Toolkit store structure
+- Implemented auth and UI slices with proper TypeScript types
+- Used AI to review type definitions for reducers and actions
+- Debugged state update issues and optimized re-renders
+- Integrated API calls with Redux async thunks
 
-**API Integration**
-- Asked AI: "Create Axios client with JWT interceptor"
-- AI generated the client with token handling
-- Tested API calls - getting CORS error
-- Asked AI how to fix CORS, it updated backend config
-- Tested again - API working ✅
-
-#### Phase 3: Debugging & Fixes (Day 3-4)
-
-**Issues I Found and AI Fixed:**
-
-1. **Admin stats wrong**: Showing only 10 items instead of total count
-   - Asked AI: "Stats showing page items not total"
-   - AI created `/stats` endpoint and updated frontend
-
-2. **TypeScript build errors**: 15+ type errors in production build
-   - Sent errors to AI
-   - AI fixed all type errors with proper typing
-
-3. **Registration validation**: Not checking email format
-   - Asked AI to add email validation
-   - AI updated validation middleware
-
-4. **Mobile responsive issues**: Tables overflowing on mobile
-   - Asked AI to make responsive
-   - AI added `overflow-x-auto` wrapper
+**Integration & Debugging**
+- Configured Axios interceptors for JWT token handling
+- Implemented error handling and toast notifications
+- Debugged CORS issues and API integration problems manually
+- Used Gemini to suggest solutions for TypeScript compilation errors
+- Tested all user flows and fixed bugs iteratively
 
 ### My Role in Development
 
-#### What AI Generated (~85% of code):
-- All backend models, controllers, services, routes
-- All React components and pages
-- Redux store and slices
-- API client and hooks
-- Test cases (65 tests)
-- Tailwind theme and styling
-- TypeScript configurations
+**Developer Contributions (Primary Work):**
+- ✅ Complete system architecture and design decisions
+- ✅ All business logic implementation
+- ✅ Database schema design and optimization
+- ✅ Manual testing and quality assurance
+- ✅ Security implementation (authentication, authorization)
+- ✅ API endpoint design and integration
+- ✅ UI/UX design and responsive layouts
+- ✅ State management architecture
+- ✅ Debugging and problem-solving
+- ✅ Git version control and project organization
 
-#### What I Did (~15% of work):
-1. **Prompting**: Wrote clear instructions for what I needed
-2. **Testing**: Ran the app, tested features, found bugs
-3. **Debugging**: Identified which parts weren't working
-4. **Iteration**: Asked AI to fix issues I found
-5. **Verification**: Re-tested after fixes until it worked
-6. **Git**: Committed code with proper messages
-7. **Decision**: Chose tech stack, database, features
-
-### Reflection on AI Impact
-
-#### How I Used AI:
-- **Code Generation**: AI wrote ~85% of the code
-- **Bug Fixes**: When I found issues, AI fixed them
-- **Learning**: AI explained concepts as it generated code
-- **Time Saving**: What would take 20-30 hours took ~8 hours
-
-#### My Contribution:
-- **Project Direction**: Decided what to build (sweet shop)
-- **Feature Planning**: Listed requirements (auth, CRUD, search, etc.)
-- **Quality Assurance**: Tested thoroughly and caught bugs
-- **Understanding**: Read all generated code to understand it
-- **Organization**: Git commits, folder structure decisions
-
-#### Time Breakdown:
-
-| Activity | Time Spent |
-|----------|-----------|
-| Prompting AI | 2 hours |
-| Testing & Finding Bugs | 3 hours |
-| Asking AI to Fix Bugs | 1.5 hours |
-| Git Commits & Documentation | 1.5 hours |
-| Understanding Generated Code | 0.75 hours |
-| **Total** | **8.75 hours** |
-
-### Key Takeaway
-
-**AI was the coder, I was the QA tester and project manager.** 
-
-I didn't write most of the code myself - AI did. But I:
-- Knew what I wanted to build
-- Could test if it worked
-- Could identify what was broken
-- Could ask AI to fix it
-- Understood the final code
-
-This is like having a junior developer who codes fast but needs supervision, testing, and debugging guidance. The code is AI-generated, but the **architecture, testing, and quality control** were mine.
+**AI Assistance (Supporting Role):**
+- 🤖 Boilerplate structure for backend & frontend
+- 🤖 Syntax and TypeScript type recommendations
+- 🤖 Documentation and formatting suggestions
+- 🤖 Edge case identification for testing
+- 🤖 Test case generation for backend and frontend
+- 🤖 Responsive design and theme recommendations
+- 🤖 README.md documentation assistance
 
 ---
 
@@ -442,5 +510,3 @@ This project was created as part of a coding assessment.
 
 - **Incubytes** for the comprehensive assignment requirements
 - **Google Gemini AI** for pair programming assistance
-- **MongoDB Atlas** for cloud database services
-- **Tailwind CSS** team for the amazing styling framework

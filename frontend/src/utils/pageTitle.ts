@@ -8,11 +8,9 @@ export const usePageTitle = () => {
     useEffect(() => {
         const titles: { [key: string]: string } = {
             '/': 'Home - Sweet Shop',
-            '/home': 'Home - Sweet Shop',
             '/login': 'Login - Sweet Shop',
             '/register': 'Register - Sweet Shop',
             '/register/admin': 'Admin Registration - Sweet Shop',
-            '/dashboard': 'Shop - Sweet Shop',
             '/shop': 'Shop - Sweet Shop',
             '/admin': 'Admin Dashboard - Sweet Shop',
         };

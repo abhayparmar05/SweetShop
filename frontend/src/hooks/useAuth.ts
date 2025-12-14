@@ -17,7 +17,7 @@ export const useAuth = () => {
             // Only store user data, tokens are in cookies
             dispatch(setUser({ user: data.data.user }));
             toast.success(data.message || 'Login successful!');
-            navigate('/dashboard');
+            navigate('/shop');
         },
         onError: (error: any) => {
             const message = error.response?.data?.message || 'Login failed. Please try again.';
@@ -32,7 +32,7 @@ export const useAuth = () => {
             // Only store user data, tokens are in cookies
             dispatch(setUser({ user: data.data.user }));
             toast.success(data.message || 'Registration successful!');
-            navigate('/dashboard');
+            navigate('/shop');
         },
         onError: (error: any) => {
             const message = error.response?.data?.message || 'Registration failed. Please try again.';
@@ -46,12 +46,12 @@ export const useAuth = () => {
         onSuccess: () => {
             dispatch(logoutAction());
             toast.success('Logged out successfully');
-            navigate('/home');
+            navigate('/');
         },
         onError: () => {
             // Even if API call fails, clear local state
             dispatch(logoutAction());
-            navigate('/home');
+            navigate('/');
         },
     });
 
