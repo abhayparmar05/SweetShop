@@ -136,8 +136,7 @@ Welcome to **Sweet Shop**, a premium Sweet Shop Management application showcasin
 ---
 
 ## 🌐 Hosting
-
-🔗 **Live Application**: [http://13.200.251.129:5173/](http://13.200.251.129:5173/)
+🔗 **Live Application**: [http://13.200.251.129/](http://13.200.251.129/)
 
 The application is hosted on **AWS EC2** in the Asia Pacific (Mumbai) region.
 

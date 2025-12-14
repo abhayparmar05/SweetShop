@@ -6,24 +6,26 @@ import { AuthRequest } from '../middleware/auth';
 /**
  * Cookie configuration for access tokens
  * Access tokens are short-lived (15 minutes)
- */
-const ACCESS_TOKEN_COOKIE_OPTIONS = {
+ */const ACCESS_TOKEN_COOKIE_OPTIONS = {
     httpOnly: true,
-    secure: true,
-    sameSite: 'strict' as const,
-    maxAge: 15 * 60 * 1000, // 15 minutes
+    secure: false,          // ✅ MUST be false on HTTP
+    sameSite: 'lax' as const, // ✅ CRITICAL
+    path: '/',              // ✅ IMPORTANT
+    maxAge: 15 * 60 * 1000,
 };
+
 
 /**
  * Cookie configuration for refresh tokens
  * Refresh tokens are long-lived (7 days)
- */
-const REFRESH_TOKEN_COOKIE_OPTIONS = {
+ */const REFRESH_TOKEN_COOKIE_OPTIONS = {
     httpOnly: true,
-    secure: true,
-    sameSite: 'strict' as const,
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    secure: false,          // ✅ MUST be false on HTTP
+    sameSite: 'lax' as const,
+    path: '/',
+    maxAge: 7 * 24 * 60 * 60 * 1000,
 };
+
 
 // @desc    Register a new user
 // @route   POST /api/auth/register
